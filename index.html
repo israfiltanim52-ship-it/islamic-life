@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="bn"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>ইসলামিক অ্যাপ</title><link rel="manifest" href="manifest.json">
+<title>Islamic Life</title><link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f766e"><link rel="apple-touch-icon" href="icon-192.png">
 <style>
 :root{--bg:#f4f8f6;--c:#fff;--t:#17302b;--p:#0f766e;--m:#5b726c;--b:#d7e5e0}
@@ -24,9 +24,21 @@ body.dark .hd{color:#06201c;background:var(--p)}.hd b{font-size:1.4rem}
 ol li,ul li{margin:.4rem 0}.ok{color:#16a34a}.no{color:#dc2626}
 #sp{position:fixed;inset:0;background:var(--p);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:99;transition:opacity .5s;font-size:1.3rem}
 #sp img{width:96px;border-radius:22px;margin-bottom:1rem}
+nav{position:fixed;bottom:0;left:0;right:0;background:var(--c);border-top:1px solid var(--b);display:flex;justify-content:space-around;padding:.4rem 0 calc(.4rem + env(safe-area-inset-bottom));z-index:6}
+nav a{text-decoration:none;color:var(--m);font-size:.7rem;text-align:center}nav a i{display:block;font-size:1.4rem;font-style:normal}
+main{padding-bottom:5.5rem}.tile i{width:3rem;height:3rem;line-height:3rem;border-radius:14px;margin:0 auto .4rem;background:var(--ic)}
+.pr{display:flex;justify-content:space-between;padding:.35rem 0;border-bottom:1px dashed var(--b)}.pr.n{color:var(--p);font-weight:700}
+
+:root{--bg:#f5f7f6;--p:#0b5d4f;--b:#e3e9e6;--tint:#e4f1ed}body.dark{--tint:#1b3430}
+.card,.tile{box-shadow:0 1px 2px rgba(16,40,35,.05),0 4px 14px rgba(16,40,35,.04);border-radius:16px}
+.tile{padding:1.1rem .5rem;font-weight:600;font-size:.92rem}
+.tile i{background:var(--tint);color:var(--p);width:3.2rem;height:3.2rem;display:flex;align-items:center;justify-content:center;border-radius:16px;margin:0 auto .6rem}
+header{box-shadow:0 2px 10px rgba(0,0,0,.12)}header svg,button svg{display:inline-block;vertical-align:middle}
+.hd{background:linear-gradient(145deg,#0b5d4f,#0f766e 60%,#14917f);box-shadow:0 8px 24px rgba(11,93,79,.25);border-radius:20px;padding:1.4rem}
+nav a{display:flex;flex-direction:column;align-items:center;gap:2px;font-weight:600}nav a.on{color:var(--p)}nav a i{display:none}
 </style></head><body>
-<div id="sp"><img src="icon-192.png" alt=""><b>ইসলামিক অ্যাপ</b></div>
-<header><a href="#home" id="bk" hidden>←</a><b id="ti"></b></header><main id="app"></main>
+<div id="sp"><img src="icon-192.png" alt=""><b>Islamic Life</b></div>
+<header><a href="#home" id="bk" hidden><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg></a><img src="icon-192.png" width="30" height="30" alt="" style="border-radius:8px" id="lg"><b id="ti"></b></header><main id="app"></main><nav id="nv"></nav>
 <script>
 const L=k=>{try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},W=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
 let st=Object.assign({lang:'bn',dark:false,fs:18},L('st')||{});
@@ -52,7 +64,7 @@ const T=(i)=>st.lang=='bn'?NAV[i][2]:NAV[i][3],$=s=>document.querySelector(s),bn
 const hij=()=>{try{return new Intl.DateTimeFormat('bn-BD-u-ca-islamic-umalqura',{day:'numeric',month:'long',year:'numeric'}).format(new Date())}catch(e){return ''}};
 const card=(x)=>`<div class="card">${x}</div>`;
 function apply(){document.body.classList.toggle('dark',st.dark);document.documentElement.style.fontSize=st.fs+'px';W('st',st)}
-function go(){const [v,a]=(location.hash.slice(1)||'home').split('/');const i=NAV.findIndex(x=>x[0]==v);$('#bk').hidden=v=='home';$('#ti').textContent=i<0?(st.lang=='bn'?'ইসলামিক অ্যাপ':'Islamic App'):T(i);$('#app').innerHTML=(V[v]||V.home)(a);scrollTo(0,0)}
+function go(){const [v,a]=(location.hash.slice(1)||'home').split('/');const i=NAV.findIndex(x=>x[0]==v);$('#bk').hidden=v=='home';$('#ti').textContent=i<0?'Islamic Life':T(i);$('#app').innerHTML=(V[v]||V.home)(a);scrollTo(0,0);$('#lg').hidden=v!='home';document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')=='#'+v))}
 const V={
 home:()=>`<div class="hd"><div class="m" style="color:inherit;opacity:.85">${st.lang=='bn'?'আস-সালামু আলাইকুম':'Assalamu Alaikum'}</div><b>${hij()}</b></div><div class="g">${NAV.map((x,i)=>`<a class="tile" href="#${x[0]}"><i>${x[1]}</i>${T(i)}</a>`).join('')}</div>`,
 quran:(a)=>{if(a&&Q[a])return `<h3>সূরা ${S[a-1]} (${bn(a)})</h3>`+Q[a].map((x,i)=>card(`<div class="ar">${x[0]} ﴿${bn(i+1)}﴾</div><div>${x[1]}</div>`)).join('');return `<input placeholder="সূরার নাম, নম্বর বা আয়াতের অর্থ খুঁজুন" oninput="qs(this.value)"><div id="res">${ql('')}</div>`},
@@ -77,6 +89,29 @@ function ad(){const n=$('#nd').value.trim();if(!n)return;tb.l.push({n,c:0});tb.i
 function qq(){if(qi>=QZ.length)return card(`<h2>ফলাফল</h2><p>আপনার নম্বর: <b>${bn(qsc)}/${bn(QZ.length)}</b></p><a class="chip" href="#quiz" onclick="setTimeout(go,0)">আবার খেলুন</a>`);const q=QZ[qi];return card(`<div class="m">প্রশ্ন ${bn(qi+1)}/${bn(QZ.length)}</div><b>${q[0]}</b>`+q[1].map((o,i)=>`<button style="display:block;width:100%;text-align:left" onclick="qa(${i})">${o}</button>`).join(''))}
 function qa(i){const r=i==QZ[qi][2];if(r)qsc++;$('#app').innerHTML=card(`<b class="${r?'ok':'no'}">${r?'সঠিক! +১ নম্বর':'ভুল। সঠিক উত্তর: '+QZ[qi][1][QZ[qi][2]]}</b><br><button onclick="qi++;$('#app').innerHTML=qq()">পরবর্তী</button>`)}
 function zc(){const v=i=>+($('#z'+i).value)||0,tot=v(0)+v(1)+v(2)+v(3)+v(4)-v(5),n=+$('#zn').value||0;$('#zr').innerHTML=card(`নিট সম্পদ: <b>${bn(tot.toFixed(2))}</b><br>`+(!n?'নিসাবের মান দিন।':tot>=n?`যাকাত (২.৫%): <b class="ok">${bn((tot*.025).toFixed(2))}</b>`:'সম্পদ নিসাবের কম, যাকাত ফরজ নয়।'))}
+
+
+const P={book:'<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>',file:'<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>',heart:'<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>',dot:'<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="1"/>',star:'<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',cap:'<path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>',help:'<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>',wallet:'<path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/>',cal:'<path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/>',landmark:'<line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/><line x1="2" x2="22" y1="18" y2="18"/>',sliders:'<line x1="21" x2="14" y1="4" y2="4"/><line x1="10" x2="3" y1="4" y2="4"/><line x1="21" x2="12" y1="12" y2="12"/><line x1="8" x2="3" y1="12" y2="12"/><line x1="21" x2="16" y1="20" y2="20"/><line x1="12" x2="3" y1="20" y2="20"/><line x1="14" x2="14" y1="2" y2="6"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="16" x2="16" y1="18" y2="22"/>',clock:'<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',home:'<path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',nav:'<polygon points="3 11 22 2 13 21 11 13 3 11"/>',pin:'<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>'};
+const ic=(k,s=26)=>'<svg width="'+s+'" height="'+s+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">'+P[k]+'</svg>';
+const IK={quran:'book',hadith:'file',dua:'heart',tasbih:'dot',names:'star',learn:'cap',quiz:'help',zakat:'wallet',cal:'cal',hajj:'landmark',set:'sliders',prayer:'clock'};
+$('#nv').innerHTML=[['home','home','হোম'],['quran','book','কুরআন'],['prayer','clock','নামাজ'],['dua','heart','দোয়া'],['tasbih','dot','তাসবিহ']].map(x=>'<a href="#'+x[0]+'">'+ic(x[1],22)+x[2]+'</a>').join('');
+NAV.unshift(['prayer','🕰️','নামাজের সময়','Prayer Times']);
+const R=Math.PI/180,sn=a=>Math.sin(a*R),cs=a=>Math.cos(a*R),ac=x=>Math.acos(Math.max(-1,Math.min(1,x)))/R;
+function pt(d){const lat=st.lat||23.81,lng=st.lng||90.41,tz=st.tz==null?6:st.tz;
+const D=Date.UTC(d.getFullYear(),d.getMonth(),d.getDate(),12)/864e5+2440587.5-2451545;
+const g=(357.529+.98560028*D)%360,q=(280.459+.98564736*D)%360,Ls=(q+1.915*sn(g)+.02*sn(2*g))%360,e=23.439-3.6e-7*D;
+const ra=((Math.atan2(cs(e)*sn(Ls),cs(Ls))/R)/15+24)%24,dec=Math.asin(sn(e)*sn(Ls))/R;let eq=q/15-ra;eq-=24*Math.round(eq/24);
+const nn=12+tz-lng/15-eq,f=a=>ac((-sn(a)-sn(dec)*sn(lat))/(cs(dec)*cs(lat)))/15,aa=-Math.atan(1/(2+Math.tan(Math.abs(lat-dec)*R)))/R;
+return [['ফজর',nn-f(18)],['সূর্যোদয়',nn-f(.833)],['যোহর',nn+1/60],['আসর',nn+f(aa)],['মাগরিব',nn+f(.833)],['ইশা',nn+f(18)]]}
+const fm=h=>{h=(h+24)%24;let a=Math.floor(h),m=Math.round((h-a)*60);if(m==60){a++;m=0}const s=a>=12?'PM':'AM';return bn(((a+11)%12)+1)+':'+bn(String(m).padStart(2,'0'))+' '+s}
+function nxt(){const n=new Date(),h=n.getHours()+n.getMinutes()/60+n.getSeconds()/3600,l=pt(n).filter(x=>x[0]!='সূর্যোদয়');let x=l.find(x=>x[1]>h),t;if(x)t=x[1]-h;else{x=l[0];t=x[1]+24-h}const s=Math.floor(t*3600);return {n:x[0],t:x[1],c:[Math.floor(s/3600),Math.floor(s%3600/60),s%60].map(v=>bn(String(v).padStart(2,'0'))).join(':')}}
+function qib(){const lat=st.lat||23.81,lng=st.lng||90.41,d=39.8262-lng;return (Math.atan2(sn(d),cs(lat)*Math.tan(21.4225*R)-sn(lat)*cs(d))/R+360)%360}
+function upN(){const e=$('#nxc');if(!e)return;const x=nxt();$('#nxn').textContent=x.n;$('#nxt').textContent=fm(x.t);e.textContent=x.c}
+setInterval(upN,1000);
+V.prayer=()=>{const x=nxt(),b=qib();return card('<div class="m">'+(st.lat?'আপনার অবস্থান':'ঢাকা (ডিফল্ট)')+' • হানাফি আসর, ফজর/ইশা ১৮°; সময় আনুমানিক, স্থানীয় মসজিদের সময়সূচির সাথে মিলিয়ে নিন।</div>'+pt(new Date()).map(r=>'<div class="pr'+(r[0]==x.n?' n':'')+'"><span>'+r[0]+'</span><span>'+fm(r[1])+'</span></div>').join(''))+card('<b>কিবলার দিক</b><div style="text-align:center"><div style="color:var(--p);transform:rotate('+Math.round(b-45)+'deg);display:inline-block">'+ic('nav',64)+'</div><div>উত্তর থেকে <b>'+bn(Math.round(b))+'°</b> (ঘড়ির কাঁটার দিকে)</div></div>')+'<button onclick="loc()">'+ic('pin',18)+' আমার অবস্থান ব্যবহার করুন</button>'};
+V.home=()=>{const x=nxt();return '<div class="hd"><div style="opacity:.85">'+(st.lang=='bn'?'আস-সালামু আলাইকুম':'Assalamu Alaikum')+'</div><div>পরবর্তী নামাজ: <b id="nxn">'+x.n+'</b></div><b style="font-size:2.2rem" id="nxt">'+fm(x.t)+'</b><div id="nxc">'+x.c+'</div><div style="margin-top:.4rem">'+hij()+'</div></div><div class="g">'+NAV.map((y,i)=>'<a class="tile" href="#'+y[0]+'"><i>'+ic(IK[y[0]])+'</i>'+T(i)+'</a>').join('')+'</div>'};
+function loc(){navigator.geolocation?navigator.geolocation.getCurrentPosition(p=>{st.lat=p.coords.latitude;st.lng=p.coords.longitude;st.tz=-new Date().getTimezoneOffset()/60;apply();go()},()=>alert('অবস্থান পাওয়া যায়নি')):alert('এই ডিভাইসে সমর্থিত নয়')}
+const os=V.set;V.set=()=>os()+'<button onclick="loc()">'+ic('pin',18)+' নামাজের সময়ের জন্য অবস্থান সেট করুন</button>';
 addEventListener('hashchange',go);apply();go();
 setTimeout(()=>{const s=$('#sp');s.style.opacity=0;setTimeout(()=>s.remove(),500)},900);
 if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
