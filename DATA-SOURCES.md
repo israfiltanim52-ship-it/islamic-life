@@ -1,9 +1,13 @@
-# Data sources and religious-content notes
+# Data sources and attribution
 
 ## Quran
-QuranEnc's published API documentation states that its API requires no authentication and supports CORS. The app dynamically discovers a Bengali translation from its Bengali translation list endpoint and loads a full surah at a time. Source and docs: https://quranenc.com/bn/home/api/
+The full-surah reader requests Arabic text and Bengali translation from the QuranEnc public API (`https://quranenc.com/api/v1`). The app discovers a Bengali translation and prefers the Dr. Abu Bakr Muhammad Zakaria translation where the API lists it. Attribution is shown in the Quran reader. Keep the API's translation attribution and usage conditions intact; the first load requires internet. Quran text is not bundled in this ZIP.
 
-## Asma ul Husna
-The 99 names use a common traditional enumeration. The hadith concerning 99 names is authentic, but scholars discuss whether a specific enumerated list is part of the Prophetic wording; variants exist. See https://muttaqi.app/99-names-of-allah/ and the references there. Bengali pronunciations/meanings are concise learning aids and may vary by transliteration/translation.
+## Location
+GPS is provided by the device/browser Geolocation API. Reverse geocoding, when available, uses OpenStreetMap Nominatim. Manual administrative-area labels are user-editable.
 
-Please review all religious content with qualified scholars before distributing publicly.
+## Calendar
+Gregorian date uses the device date. Bangla date is calculated using Bangladesh's revised fixed calendar rule. Hijri date uses the browser Intl Umm al-Qura calendar; it is not an official Bangladesh moon-sighting determination.
+
+## Asma-ul-Husna
+The app includes a commonly used educational enumeration of 99 names. Scholars and published lists differ in the enumeration of the specific 99-name list; the note in the app explains this. The names of Allah are not limited to 99.

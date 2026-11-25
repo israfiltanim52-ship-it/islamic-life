@@ -76,6 +76,23 @@ input,select{border-radius:13px;padding:12px 14px}
 .progress>span{display:block;height:100%;background:var(--p);width:0;transition:width .2s}
 @media(min-width:600px){.g{grid-template-columns:repeat(4,minmax(0,1fr))}main{padding-top:26px}}
 @media(max-width:380px){.g{gap:8px}.tile{font-size:.78rem;padding:13px 5px}}
+
+/* Islamic Life 2.1: calm geometric Islamic ambience */
+body{background-color:var(--bg);background-image:
+ radial-gradient(circle at 12px 12px,rgba(18,107,80,.045) 2px,transparent 2.5px),
+ repeating-linear-gradient(45deg,transparent 0 28px,rgba(18,107,80,.025) 28px 29px,transparent 29px 56px),
+ repeating-linear-gradient(-45deg,transparent 0 28px,rgba(201,164,92,.025) 28px 29px,transparent 29px 56px)}
+body.dark{background-image:radial-gradient(circle at 12px 12px,rgba(86,189,145,.07) 2px,transparent 2.5px),repeating-linear-gradient(45deg,transparent 0 28px,rgba(86,189,145,.035) 28px 29px,transparent 29px 56px),repeating-linear-gradient(-45deg,transparent 0 28px,rgba(201,164,92,.025) 28px 29px,transparent 29px 56px)}
+.card,.tile{backdrop-filter:blur(5px)}
+.section-title{display:flex;align-items:center;gap:9px;margin:18px 2px 10px;font-weight:800}
+.field-label{display:block;font-size:.86rem;color:var(--m);margin:8px 2px 2px}
+.mini-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.stat{background:var(--tint);border-radius:14px;padding:12px}
+.stat b{display:block;font-size:1.15rem;color:var(--p)}
+.table-wrap{overflow-x:auto}
+.data-table{width:100%;border-collapse:collapse;font-size:.9rem}
+.data-table th,.data-table td{padding:9px;border-bottom:1px solid var(--b);text-align:left;white-space:nowrap}
+.soft-note{background:var(--tint);padding:12px;border-radius:14px;color:var(--m);font-size:.84rem}
 </style></head><body>
 <div id="sp"><img src="icon-192.png" alt=""><b>Islamic Life</b></div>
 <header><a href="#home" id="bk" hidden><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg></a><img src="icon-192.png" width="30" height="30" alt="" style="border-radius:8px" id="lg"><b id="ti"></b></header><main id="app"></main><nav id="nv"></nav>
@@ -191,6 +208,115 @@ const ASMA = [["الرَّحْمَٰنُ", "আর-রাহমান", "পর�
 V.names=()=>`<div class="hd"><b>আসমাউল হুসনা</b><div>আল্লাহর সুন্দর নামসমূহ</div><div style="font-size:.8rem;margin-top:8px">৯৯টি নাম • আরবি • বাংলা উচ্চারণ • সংক্ষিপ্ত অর্থ</div></div><input placeholder="নাম বা অর্থ খুঁজুন" oninput="asmaFilter(this.value)"><div id="asma-list">${asmaList('')}</div><p class="m">নোট: ৯৯ নামের নির্দিষ্ট তালিকার বিন্যাসে বর্ণনাভেদে পার্থক্য আছে। এখানে বহুল প্রচলিত একটি তালিকা শিক্ষামূলকভাবে দেওয়া হয়েছে; আল্লাহর নাম ৯৯টিতে সীমাবদ্ধ নয়। (সূরা আল-আ'রাফ ৭:১৮০; সহিহ বুখারি ২৭৩৬)</p>`;
 function asmaList(q=''){q=q.trim().toLowerCase();return ASMA.map((x,i)=>({x,i})).filter(o=>!q||o.x.join(' ').toLowerCase().includes(q)).map(({x,i})=>`<div class="card namecard"><div class="name-no">${bn(i+1)}</div><div><div class="name-ar">${x[0]}</div><b>${x[1]}</b><div class="name-meaning">${x[2]}</div></div></div>`).join('')||'<p class="m">কোনো নাম পাওয়া যায়নি।</p>'}
 function asmaFilter(q){const e=document.getElementById('asma-list');if(e)e.innerHTML=asmaList(q)}
+
+// ===== Islamic Life 2.1 additions =====
+const locMeta=L('il_location')||{};
+function safeTxt(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function bnCal(d){
+ const months=['বৈশাখ','জ্যৈষ্ঠ','আষাঢ়','শ্রাবণ','ভাদ্র','আশ্বিন','কার্তিক','অগ্রহায়ণ','পৌষ','মাঘ','ফাল্গুন','চৈত্র'];
+ const y=d.getFullYear(), leap=(y%4===0&&y%100!==0)||y%400===0;
+ const start=new Date(y,3,14); // Bangladesh revised calendar: Boishakh 1 = 14 April
+ let by=y-593, dayOffset=Math.floor((d-start)/86400000);
+ if(dayOffset<0){by--;dayOffset+=365+((y-1)%4===0?1:0)}
+ const lens=[31,31,31,31,31,30,30,30,30,30,leap?30:29,30];
+ let mi=0;while(mi<11&&dayOffset>=lens[mi]){dayOffset-=lens[mi];mi++}
+ return {day:dayOffset+1,month:months[mi],year:by};
+}
+function tripleDate(){
+ const d=new Date(),b=bnCal(d);
+ let h='';try{h=new Intl.DateTimeFormat('bn-BD-u-ca-islamic-umalqura',{day:'numeric',month:'long',year:'numeric'}).format(d)}catch(e){h=new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura',{day:'numeric',month:'long',year:'numeric'}).format(d)}
+ const en=new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'long',year:'numeric'}).format(d);
+ return `<div class="mini-grid"><div class="stat"><span class="m">বাংলা তারিখ</span><b>${bn(b.day)} ${b.month}</b><span class="m">${bn(b.year)} বঙ্গাব্দ</span></div><div class="stat"><span class="m">English date</span><b>${safeTxt(en)}</b><span class="m">Gregorian calendar</span></div><div class="stat" style="grid-column:1/-1"><span class="m">হিজরি তারিখ</span><b>${safeTxt(h)}</b><span class="m">চাঁদ দেখার কারণে স্থানীয় তারিখে পার্থক্য হতে পারে</span></div></div>`;
+}
+V.cal=()=>`<div class="hd"><b>তিন ক্যালেন্ডারের তারিখ</b><div>বাংলা • English • হিজরি</div></div>${card(tripleDate()+`<p class="soft-note">হিজরি তারিখ Umm al-Qura ক্যালেন্ডার অনুযায়ী ডিভাইসে দেখানো হয়। বাংলাদেশে চাঁদ দেখার সরকারি ঘোষণার সঙ্গে এক দিন পার্থক্য হতে পারে। বাংলা তারিখ বাংলাদেশের সংশোধিত স্থির ক্যালেন্ডার ধরে গণনা করা হয়েছে।</p>`)}`;
+function locationCard(){
+ const x=locMeta;
+ return `<div class="hd"><b>আপনার অবস্থান</b><div>সঠিক এলাকার নাম ও স্থানাঙ্ক দিয়ে নামাজের সময় নির্ধারণ</div></div>
+ ${card(`<div class="section-title">📍 অবস্থানের তথ্য</div>
+ <label class="field-label">বিভাগ</label><input id="locDiv" placeholder="যেমন: বরিশাল" value="${safeTxt(x.division)}">
+ <label class="field-label">জেলা</label><input id="locDist" placeholder="যেমন: পিরোজপুর" value="${safeTxt(x.district)}">
+ <label class="field-label">উপজেলা / থানা</label><input id="locUp" placeholder="যেমন: নাজিরপুর" value="${safeTxt(x.upazila)}">
+ <label class="field-label">ইউনিয়ন</label><input id="locUnion" placeholder="ইউনিয়নের নাম" value="${safeTxt(x.union)}">
+ <label class="field-label">গ্রাম / এলাকা</label><input id="locVillage" placeholder="গ্রাম বা মহল্লার নাম" value="${safeTxt(x.village)}">
+ <label class="field-label">অক্ষাংশ (Latitude)</label><input id="locLat" type="number" step="any" placeholder="GPS থেকে স্বয়ংক্রিয়ভাবে" value="${x.lat??st.lat??''}">
+ <label class="field-label">দ্রাঘিমাংশ (Longitude)</label><input id="locLng" type="number" step="any" placeholder="GPS থেকে স্বয়ংক্রিয়ভাবে" value="${x.lng??st.lng??''}">
+ <button onclick="saveManualLocation()">অবস্থান সংরক্ষণ করুন</button>
+ <button class="chip o" onclick="loc()">GPS দিয়ে অবস্থান শনাক্ত করুন</button>
+ <p class="m">GPS অনুমতি দিলে স্থানাঙ্ক পাওয়া যাবে। প্রশাসনিক এলাকার নাম যাচাই করে প্রয়োজনে নিজে ঠিক করে সংরক্ষণ করুন।</p>`)}`;
+}
+V.location=()=>locationCard();
+function saveManualLocation(){
+ const val=id=>document.getElementById(id)?.value?.trim()||'';
+ const lat=parseFloat(val('locLat')),lng=parseFloat(val('locLng'));
+ if(Number.isFinite(lat)&&Number.isFinite(lng)&&(Math.abs(lat)>90||Math.abs(lng)>180)){alert('Latitude/Longitude সঠিক নয়।');return}
+ locMeta.division=val('locDiv');locMeta.district=val('locDist');locMeta.upazila=val('locUp');locMeta.union=val('locUnion');locMeta.village=val('locVillage');
+ if(Number.isFinite(lat)&&Number.isFinite(lng)){locMeta.lat=lat;locMeta.lng=lng;st.lat=lat;st.lng=lng;st.tz=6}
+ W('il_location',locMeta);W('st',st);alert('অবস্থানের তথ্য সংরক্ষণ হয়েছে।');go();
+}
+async function loc(){
+ if(!navigator.geolocation){alert('এই ডিভাইসে GPS সমর্থিত নয়।');return}
+ navigator.geolocation.getCurrentPosition(async p=>{
+  st.lat=p.coords.latitude;st.lng=p.coords.longitude;st.tz=6;
+  locMeta.lat=st.lat;locMeta.lng=st.lng;
+  try{
+   const u=`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${st.lat}&lon=${st.lng}&accept-language=bn`;
+   const r=await fetch(u);if(r.ok){const j=await r.json(),a=j.address||{};
+    locMeta.division=a.state||a.region||locMeta.division||'';
+    locMeta.district=a.state_district||a.county||a.city_district||locMeta.district||'';
+    locMeta.upazila=a.city||a.town||a.municipality||a.suburb||locMeta.upazila||'';
+    locMeta.union=a.village||a.neighbourhood||a.hamlet||locMeta.union||'';
+    locMeta.village=a.road||a.quarter||a.residential||locMeta.village||'';
+   }
+  }catch(e){}
+  W('il_location',locMeta);W('st',st);alert('GPS অবস্থান সংরক্ষণ হয়েছে। নামাজের সময় এখন এই স্থানাঙ্ক অনুযায়ী গণনা হবে।');go();
+ },e=>alert('অবস্থান পাওয়া যায়নি। ব্রাউজার/ফোনে Location Permission চালু করুন অথবা নিজে অবস্থান লিখুন।'),{enableHighAccuracy:true,timeout:15000,maximumAge:60000});
+}
+const oldPrayer=V.prayer;
+V.prayer=()=>`<div class="hd"><b>নামাজের সময়সূচি</b><div>${safeTxt([locMeta.village,locMeta.union,locMeta.upazila,locMeta.district,locMeta.division].filter(Boolean).join(', ')||'অবস্থান নির্ধারণ করুন')}</div></div>${oldPrayer()}${card(`<a class="chip" href="#location">📍 অবস্থান পরিবর্তন / সম্পাদনা</a>`)}`;
+const madrasaStore=()=>L('il_madrasa')||{students:[],attendance:{},marks:[],notices:[]};
+function saveMadrasa(d){W('il_madrasa',d)}
+function madrasaHome(){
+ const d=madrasaStore();
+ return `<div class="hd"><b>মাদ্রাসা ব্যবস্থাপনা</b><div>শিক্ষার্থী • শিক্ষক • হাজিরা • পরীক্ষা • ফলাফল</div></div>
+ <div class="mini-grid"><div class="stat"><span class="m">শিক্ষার্থী</span><b>${bn(d.students.length)}</b></div><div class="stat"><span class="m">পরীক্ষার ফল</span><b>${bn(d.marks.length)}</b></div></div>
+ <div class="section-title">প্রধান ব্যবস্থাপনা</div><div class="g">
+ <a class="tile" href="#madrasa/students"><i>👨‍🎓</i>শিক্ষার্থী ভর্তি ও তালিকা</a>
+ <a class="tile" href="#madrasa/attendance"><i>🗓️</i>দৈনিক হাজিরা</a>
+ <a class="tile" href="#madrasa/exams"><i>📝</i>পরীক্ষা ও নম্বর</a>
+ <a class="tile" href="#madrasa/results"><i>📊</i>ফলাফল ও মার্কশিট</a>
+ <a class="tile" href="#madrasa/teachers"><i>👨‍🏫</i>শিক্ষক তালিকা</a>
+ <a class="tile" href="#madrasa/routine"><i>📚</i>ক্লাস রুটিন</a>
+ <a class="tile" href="#madrasa/notices"><i>📢</i>নোটিশ</a>
+ <a class="tile" href="#madrasa/fees"><i>💳</i>ফি ও বেতন হিসাব</a>
+ <a class="tile" href="#madrasa/reports"><i>📈</i>রিপোর্ট</a>
+ </div><p class="soft-note">এই সংস্করণে তথ্য এই ডিভাইসের ব্রাউজারে সংরক্ষিত হবে। একাধিক শিক্ষক/অভিভাবকের অনলাইন লগইন ও ক্লাউড সিঙ্ক চালু করতে আলাদা সার্ভার/ডেটাবেস ও নিরাপদ অ্যাকাউন্ট ব্যবস্থা লাগবে।</p>`;
+}
+function madrasaSub(page){
+ const d=madrasaStore(), back='<a class="chip o" href="#madrasa">← মাদ্রাসা</a>';
+ if(page==='students')return `${back}<h3>শিক্ষার্থী ভর্তি ও তালিকা</h3>${card(`<label class="field-label">শিক্ষার্থীর নাম</label><input id="msName" placeholder="পূর্ণ নাম"><label class="field-label">জামাত / শ্রেণি</label><input id="msClass" placeholder="যেমন: হিফজ / নাহবেমীর"><label class="field-label">রোল</label><input id="msRoll" placeholder="রোল নম্বর"><label class="field-label">অভিভাবকের মোবাইল</label><input id="msPhone" inputmode="tel" placeholder="ঐচ্ছিক"><button onclick="addStudent()">শিক্ষার্থী যুক্ত করুন</button>`) }${d.students.map((s,i)=>card(`<b>${safeTxt(s.name)}</b><div class="m">${safeTxt(s.cls)} • রোল ${safeTxt(s.roll)} • ${safeTxt(s.phone)}</div><button class="chip o" onclick="removeStudent(${i})">মুছুন</button>`)).join('')||'<p class="m">এখনো শিক্ষার্থী যোগ করা হয়নি।</p>'}`;
+ if(page==='attendance')return `${back}<h3>দৈনিক হাজিরা</h3><label class="field-label">তারিখ</label><input id="attDate" type="date" value="${new Date().toISOString().slice(0,10)}">${d.students.map((s,i)=>`<div class="pr"><span>${safeTxt(s.name)} (${safeTxt(s.roll)})</span><select id="att${i}"><option value="present">উপস্থিত</option><option value="absent">অনুপস্থিত</option><option value="late">বিলম্ব</option></select></div>`).join('')||'<p class="m">আগে শিক্ষার্থী যোগ করুন।</p>'}<button onclick="saveAttendance()">হাজিরা সংরক্ষণ করুন</button>`;
+ if(page==='exams')return `${back}<h3>পরীক্ষা ও নম্বর</h3>${card(`<label class="field-label">পরীক্ষার নাম</label><input id="exName" placeholder="যেমন: মাসিক পরীক্ষা"><label class="field-label">বিষয়</label><input id="exSubject" placeholder="যেমন: কুরআন মাজিদ"><label class="field-label">পূর্ণমান</label><input id="exTotal" type="number" value="100"><label class="field-label">শিক্ষার্থীর রোল</label><input id="exRoll" placeholder="রোল নম্বর"><label class="field-label">প্রাপ্ত নম্বর</label><input id="exScore" type="number"><button onclick="saveMark()">নম্বর সংরক্ষণ করুন</button>`)}`;
+ if(page==='results')return `${back}<h3>ফলাফল ও মার্কশিট</h3>${d.marks.map(m=>card(`<b>${safeTxt(m.student||'রোল '+m.roll)}</b><div>${safeTxt(m.exam)} • ${safeTxt(m.subject)}</div><div class="m">প্রাপ্ত নম্বর: ${bn(m.score)} / ${bn(m.total)} • ${bn(Math.round(m.score/m.total*100))}%</div>`)).join('')||'<p class="m">এখনো ফলাফল যুক্ত করা হয়নি।</p>'}`;
+ if(page==='teachers')return `${back}<h3>শিক্ষক তালিকা</h3>${card('<p>শিক্ষকের নাম ও দায়িত্বের তালিকা নোটিশ/তথ্য হিসেবে যুক্ত করার ব্যবস্থা পরবর্তী সংস্করণে ডেটাবেসের সঙ্গে যুক্ত করা যাবে।</p><label class="field-label">শিক্ষকের নাম</label><input id="teacherName" placeholder="নাম"><label class="field-label">বিষয় / দায়িত্ব</label><input id="teacherRole" placeholder="দায়িত্ব"><button onclick="addTeacher()">শিক্ষক যুক্ত করুন</button>')}${(d.teachers||[]).map(t=>card(`<b>${safeTxt(t.name)}</b><div class="m">${safeTxt(t.role)}</div>`)).join('')}`;
+ if(page==='routine')return `${back}<h3>ক্লাস রুটিন</h3>${card('<label class="field-label">দিন</label><input id="rtDay" placeholder="রবিবার"><label class="field-label">সময় ও জামাত</label><input id="rtInfo" placeholder="সকাল ৮টা — হিদায়াতুন্নাহু"><button onclick="addRoutine()">রুটিন যুক্ত করুন</button>')}${(d.routine||[]).map(t=>card(`<b>${safeTxt(t.day)}</b><div>${safeTxt(t.info)}</div>`)).join('')}`;
+ if(page==='notices')return `${back}<h3>মাদ্রাসার নোটিশ</h3>${card('<input id="noticeText" placeholder="নোটিশ লিখুন"><button onclick="addNotice()">নোটিশ প্রকাশ করুন</button>')}${(d.notices||[]).map(n=>card(`<b>${safeTxt(n.text)}</b><div class="m">${safeTxt(n.date)}</div>`)).join('')}`;
+ if(page==='fees')return `${back}<h3>ফি ও বেতন হিসাব</h3>${card('<label class="field-label">শিক্ষার্থীর রোল</label><input id="feeRoll" placeholder="রোল"><label class="field-label">মাস</label><input id="feeMonth" placeholder="মাস"><label class="field-label">টাকার পরিমাণ</label><input id="feeAmount" type="number"><button onclick="addFee()">ফি জমা যুক্ত করুন</button>')}${(d.fees||[]).map(f=>card(`<b>রোল ${safeTxt(f.roll)}</b><div>${safeTxt(f.month)} • ${bn(f.amount)} টাকা</div>`)).join('')}`;
+ if(page==='reports')return `${back}<h3>রিপোর্ট</h3>${card(`<p>মোট শিক্ষার্থী: <b>${bn(d.students.length)}</b></p><p>মোট হাজিরার রেকর্ড: <b>${bn(Object.keys(d.attendance).length)}</b></p><p>মোট পরীক্ষার নম্বর: <b>${bn(d.marks.length)}</b></p>`)}`;
+ return madrasaHome();
+}
+V.madrasa=(page)=>page?madrasaSub(page):madrasaHome();
+function addStudent(){const d=madrasaStore(),v=id=>document.getElementById(id).value.trim();if(!v('msName')||!v('msClass')){alert('নাম ও জামাত লিখুন');return}d.students.push({name:v('msName'),cls:v('msClass'),roll:v('msRoll'),phone:v('msPhone')});saveMadrasa(d);go()}
+function removeStudent(i){const d=madrasaStore();d.students.splice(i,1);saveMadrasa(d);go()}
+function saveAttendance(){const d=madrasaStore(),date=document.getElementById('attDate').value;d.attendance[date]=d.students.map((s,i)=>({name:s.name,roll:s.roll,status:document.getElementById('att'+i).value}));saveMadrasa(d);alert('হাজিরা সংরক্ষণ হয়েছে');}
+function saveMark(){const d=madrasaStore(),roll=document.getElementById('exRoll').value.trim(),score=+document.getElementById('exScore').value,total=+document.getElementById('exTotal').value,s=d.students.find(x=>x.roll===roll);if(!roll||!Number.isFinite(score)||!total||score<0||score>total){alert('রোল ও সঠিক নম্বর দিন');return}d.marks.push({roll,student:s?.name||'',exam:document.getElementById('exName').value,subject:document.getElementById('exSubject').value,score,total});saveMadrasa(d);alert('নম্বর সংরক্ষণ হয়েছে');go()}
+function addTeacher(){const d=madrasaStore();d.teachers=d.teachers||[];d.teachers.push({name:document.getElementById('teacherName').value,role:document.getElementById('teacherRole').value});saveMadrasa(d);go()}
+function addRoutine(){const d=madrasaStore();d.routine=d.routine||[];d.routine.push({day:document.getElementById('rtDay').value,info:document.getElementById('rtInfo').value});saveMadrasa(d);go()}
+function addNotice(){const d=madrasaStore();d.notices.push({text:document.getElementById('noticeText').value,date:new Date().toLocaleDateString('bn-BD')});saveMadrasa(d);go()}
+function addFee(){const d=madrasaStore();d.fees=d.fees||[];d.fees.push({roll:document.getElementById('feeRoll').value,month:document.getElementById('feeMonth').value,amount:+document.getElementById('feeAmount').value});saveMadrasa(d);go()}
+const homeBase=V.home;
+V.home=()=>`${homeBase()}<div class="section-title">📅 আজকের তিন তারিখ</div>${card(tripleDate())}<div class="section-title">📍 আপনার অবস্থান</div>${card(`<div>${safeTxt([locMeta.village,locMeta.union,locMeta.upazila,locMeta.district,locMeta.division].filter(Boolean).join(', ')||'এখনো অবস্থান নির্ধারণ করা হয়নি')}</div><a class="chip" href="#location">অবস্থান নির্ধারণ করুন</a>`)}`;
+NAV.push(['location','📍','আমার অবস্থান','My Location']);
+
 addEventListener('hashchange',go);apply();go();
 setTimeout(()=>{const s=$('#sp');s.style.opacity=0;setTimeout(()=>s.remove(),500)},900);
 if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
