@@ -1,0 +1,6 @@
+{
+  "appId": "com.islamiclife.app",
+  "appName": "Islamic Life",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}
