@@ -1,4 +1,4 @@
-# Islamic Life 2.1
+# Islamic Life — Islamic SVG Icon Edition
 
 Islamic Life is a Bengali-first Islamic life and learning PWA with an Android build workflow.
 
@@ -9,6 +9,7 @@ Islamic Life is a Bengali-first Islamic life and learning PWA with an Android bu
 - Location profile fields: division, district, upazila/thana, union and village.
 - Bengali, Gregorian and Hijri date display. Hijri date may differ from Bangladesh moon-sighting announcements.
 - Madrasa tools: student register, attendance, exam marks, results, teacher list, class routine, notices, fee records and summary reports.
+- Original inline SVG icon system: every navigation, service and madrasa-management icon uses a consistent mihrab arch and Islamic geometric ornament; no emoji icons or external icon library required.
 - Decorative subtle Islamic geometric background, responsive PWA layout.
 
 ## Deploy web app
