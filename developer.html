@@ -2,51 +2,64 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ডেভেলপার - Islamic Life</title>
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0d503b">
+<title>নির্মাতার পরিচয় — Islamic Life</title>
+<link href="https://cdn.jsdelivr.net/gh/qnabangla/font-solaimanlipi@main/font.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Hind Siliguri',sans-serif}
-body{background:#f1f5f2;padding-bottom:30px}
-.header{background:linear-gradient(180deg,#00a877,#004d40);color:#fff;padding:18px 16px 28px;border-radius:0 0 24px 24px;text-align:center}
-.header a{color:#ffd98a;text-decoration:none;font-size:14px}
-.header h1{font-size:22px;margin-top:6px}
-.card{background:#fff;margin:14px 16px;padding:20px;border-radius:18px;box-shadow:0 2px 10px rgba(0,0,0,.06);text-align:center}
-.avatar{width:110px;height:110px;border-radius:50%;object-fit:cover;border:4px solid #e6f7f0;margin:0 auto}
-.card h2{color:#004d40;margin-top:10px;font-size:22px}
-.card .role{color:#00a877;font-weight:bold}
-.card p{color:#555;line-height:1.7;margin-top:10px;font-size:15px}
-.list{text-align:left;margin-top:14px}
-.item{display:flex;gap:12px;align-items:center;padding:12px;border:1px solid #eee;border-radius:12px;margin-bottom:8px}
-.item b{color:#222;font-size:15px}
-.item span{color:#888;font-size:13px;display:block}
-.btn{width:100%;padding:13px;border:none;border-radius:12px;background:#004d40;color:#fff;font-size:16px;margin-top:10px}
-.btn2{background:#fff;color:#004d40;border:1px solid #004d40}
-.footer{text-align:center;color:#888;font-size:13px;margin-top:14px;line-height:1.6}
+:root{--bg:#f5f8f4;--card:#fff;--ink:#17372d;--green:#12634b;--muted:#71847a;--line:#e1eae2;--gold:#c9a45c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"SolaimanLipi",sans-serif;line-height:1.7}
+.hero{padding:22px 18px 34px;color:white;text-align:center;background:radial-gradient(circle at 85% 10%,#348b67,transparent 35%),linear-gradient(135deg,#082f22,#12634b 65%,#19815c);border-radius:0 0 30px 30px}
+.back{display:block;text-align:left;color:#f2d99d;text-decoration:none;max-width:760px;margin:0 auto 20px}
+.avatar{width:104px;height:104px;margin:auto;border-radius:30px;display:grid;place-items:center;font-size:2.5rem;font-weight:bold;color:#f8e7bc;background:rgba(255,255,255,.12);border:2px solid rgba(225,196,133,.75);box-shadow:0 12px 30px #001d153d}
+h1{font-size:1.55rem;margin:13px 0 2px}.role{color:#f2d99d}
+.wrap{max-width:760px;margin:-16px auto 0;padding:0 15px 35px;position:relative}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:19px;margin:13px 0;box-shadow:0 9px 26px rgba(20,61,43,.07)}
+h2{font-size:1.12rem;color:var(--green);margin:0 0 10px}
+p{margin:0;color:#50665a}
+.item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.item:last-child{border:0;padding-bottom:0}.ico{width:38px;height:38px;flex:none;border-radius:13px;background:#eaf3eb;color:var(--green);display:grid;place-items:center}
+.item b{display:block}.small{font-size:.88rem;color:var(--muted)}
+.quote{border-left:3px solid var(--gold);padding:4px 0 4px 13px}
+.link{display:inline-block;margin-top:12px;padding:10px 15px;border-radius:13px;background:var(--green);color:white;text-decoration:none}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 15px 25px}
 </style>
 </head>
 <body>
-
-<div class="header"><a href="index.html">← হোমে ফিরুন</a><h1>👨‍💻 ডেভেলপার</h1></div>
-
-<div class="card">
-  <!-- আপনার ছবি এখানে দিবেন -->
-  <img class="avatar" src="https://via.placeholder.com/150" alt="Israfil Tanim">
-  <h2>ইসরাফিল তানিম</h2>
-  <div class="role">Founder & Developer • Islamic Life</div>
-  <p>আসসালামু আলাইকুম। আমি খুলনা থেকে। দ্বীনের খেদমতের নিয়তে এই Islamic Life অ্যাপটি বানিয়েছি, যাতে কুরআন, হাদীস, নামায, মাদ্রাসা সহ সবকিছু এক অ্যাপে পাওয়া যায়। আপনাদের দোয়া চাই।</p>
-  <div class="list">
-    <div class="item"><span style="font-size:22px">📍</span><div><b>খুলনা, বাংলাদেশ</b><span>লোকেশন</span></div></div>
-    <div class="item"><span style="font-size:22px">📱</span><div><b>WhatsApp / ফেসবুক</b><span>যোগাযোগের জন্য ক্লিক করুন</span></div></div>
-    <div class="item"><span style="font-size:22px">📧</span><div><b>israfiltanim@gmail.com</b><span>ইমেইল</span></div></div>
-    <div class="item"><span style="font-size:22px">🕌</span><div><b>Islamic Life - v1.0.0</b><span>আপডেট: নভেম্বর ২০২৬ • ৪৬টি ফিচার</span></div></div>
-  </div>
-  <button class="btn">⭐ রেটিং দিন</button>
-  <button class="btn btn2">📤 অ্যাপ শেয়ার করুন</button>
-  <button class="btn btn2">💬 ফিডব্যাক পাঠান</button>
-</div>
-
-<div class="footer">Made with ❤️ for Ummah<br>© 2026 Islamic Life • Developed by Israfil Tanim</div>
-
+<section class="hero">
+<a class="back" href="index.html">← অ্যাপে ফিরে যান</a>
+<div class="avatar" aria-label="ইস্রাফিল তানিমের নামের আদ্যক্ষর">ইত</div>
+<h1>ইস্রাফিল তানিম</h1>
+<div class="role">প্রতিষ্ঠাতা ও নির্মাতা · Founder &amp; Developer</div>
+<div>Islamic Life</div>
+</section>
+<main class="wrap">
+<section class="card">
+<h2>পরিচিতি</h2>
+<p>আসসালামু আলাইকুম। আমি ইস্রাফিল তানিম। ইসলামি জ্ঞান, শিক্ষা ও প্রযুক্তিকে মানুষের উপকারে কাজে লাগানোর আগ্রহ থেকেই Islamic Life নির্মাণের উদ্যোগ নিয়েছি। আমার প্রত্যাশা, এই অ্যাপ মানুষের দৈনন্দিন দ্বীনি জীবনকে আরও সহজ ও সুন্দর করতে সহায়তা করবে।</p>
+</section>
+<section class="card">
+<h2>শিক্ষা ও কর্মজীবন</h2>
+<div class="item"><div class="ico">🎓</div><div><b>শিক্ষার্থী</b><span class="small">পিরোজপুর ফাজিল (ডিগ্রি) মাদ্রাসা</span></div></div>
+<div class="item"><div class="ico">📖</div><div><b>শিক্ষক</b><span class="small">খানাকুনিয়ারী তা'লীমুল কুরআন নূরানী ও হিফজ মাদ্রাসা</span></div></div>
+<div class="item"><div class="ico">🕌</div><div><b>ইমাম</b><span class="small">বাইতুস সালাত জামে মসজিদ, খানাকুনিয়ারী, কদমতলা, পিরোজপুর সদর, পিরোজপুর</span></div></div>
+</section>
+<section class="card">
+<h2>আগ্রহ ও কাজ</h2>
+<p>ইসলামি জ্ঞানচর্চা, অ্যাপ ও ওয়েবসাইট নির্মাণ, গ্রাফিক ডিজাইন, প্রযুক্তি এবং লেখালেখি।</p>
+</section>
+<section class="card">
+<h2>নির্মাতার বক্তব্য</h2>
+<p class="quote">আমার উদ্দেশ্য শুধু একটি অ্যাপ তৈরি করা নয়; বরং প্রযুক্তির মাধ্যমে ইসলামি জ্ঞান, শিক্ষা ও দৈনন্দিন আমলকে মানুষের কাছে আরও সহজ, সুন্দর ও সহজলভ্য করে তোলা। আল্লাহ তাআলা এই প্রচেষ্টাকে কবুল করুন এবং কল্যাণের মাধ্যম হিসেবে গ্রহণ করুন। আমিন।</p>
+</section>
+<section class="card">
+<h2>যোগাযোগ ও প্রকল্প</h2>
+<p>প্রকল্পের কোড ও উন্নয়নসংক্রান্ত তথ্য GitHub-এ পাওয়া যাবে।</p>
+<a class="link" href="https://github.com/israfiltanim52-ship-it/islamic-life" target="_blank" rel="noopener">GitHub Repository ↗</a>
+</section>
+<footer>© 2026 Islamic Life · Developed by Israfil Tanim</footer>
+</main>
 </body>
 </html>

@@ -32,3 +32,8 @@ This is a debug APK for testing, not a Play Store signed release. A production r
 - GPS reverse lookup is best-effort and uses OpenStreetMap Nominatim. If a local administrative label is missing, edit the location fields manually.
 - Madrasa records in this version are stored only in the current browser/device using local storage. They are not synced between users or devices. Do not store sensitive student data in this prototype. Multi-user access requires a secure backend, authentication, authorization and privacy controls.
 - Calendar display uses a calculated Bangla date and the browser's Umm al-Qura Hijri calendar. Local moon-sighting dates can differ.
+
+## Design update
+- Refreshed the interface with a modern emerald, ivory and gold visual theme.
+- Applied SolaimanLipi for Bengali UI text, Amiri for Quranic Arabic display, and Noto Naskh Arabic for general Arabic text.
+- Updated the developer profile page using the supplied education and work details; omitted unverified contact information.

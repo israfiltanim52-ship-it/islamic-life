@@ -1,6 +1,11 @@
 <!DOCTYPE html><html lang="bn"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Islamic Life</title><link rel="manifest" href="manifest.json">
+<title>Islamic Life</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/qnabangla/font-solaimanlipi@main/font.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f766e"><link rel="apple-touch-icon" href="icon-192.png">
 <style>
 :root{--bg:#f4f8f6;--c:#fff;--t:#17302b;--p:#0f766e;--m:#5b726c;--b:#d7e5e0}
@@ -100,6 +105,98 @@ body.dark{background-image:radial-gradient(circle at 12px 12px,rgba(86,189,145,.
 .hm-ic{width:50px;height:50px;border-radius:15px;background:#163329;color:#e7c26b;display:flex;align-items:center;justify-content:center;margin:0 auto}
 .hm-ic svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .hm-app b{display:block;font-size:13px;margin-top:9px;font-weight:600}
+
+/* Islamic Life — Modern Emerald & Gold redesign */
+:root{
+ --bg:#f5f8f4;--c:rgba(255,255,255,.94);--t:#17372d;--p:#12634b;
+ --m:#71847a;--b:#e1eae2;--tint:#eaf3eb;--gold:#c9a45c;
+ --shadow:0 10px 28px rgba(20,61,43,.075);
+}
+body.dark{
+ --bg:#0b1712;--c:rgba(20,39,30,.96);--t:#edf5ee;--p:#72c69b;
+ --m:#a6b9ac;--b:#2a4235;--tint:#1b3528;--gold:#d7b875;
+ --shadow:0 12px 30px rgba(0,0,0,.22);
+}
+html{font-size:17px;scroll-behavior:smooth}
+body{
+ font-family:"SolaimanLipi","Noto Sans Bengali",sans-serif;
+ background-color:var(--bg);color:var(--t);
+ letter-spacing:0;line-height:1.65;
+ background-image:
+  radial-gradient(circle at 1px 1px,rgba(201,164,92,.10) 1px,transparent 1.5px),
+  linear-gradient(135deg,rgba(18,99,75,.025) 25%,transparent 25%,transparent 75%,rgba(18,99,75,.025) 75%);
+ background-size:24px 24px,48px 48px;
+}
+body.dark{background-image:radial-gradient(circle at 1px 1px,rgba(215,184,117,.08) 1px,transparent 1.5px)}
+header{
+ background:var(--c);color:var(--t);backdrop-filter:blur(18px);
+ border-bottom:1px solid var(--b);box-shadow:0 5px 24px rgba(16,50,34,.06);
+ min-height:68px;padding:12px max(17px,calc((100vw - 780px)/2));
+}
+header b{font-size:1.18rem;font-weight:700;letter-spacing:.1px}
+header img{box-shadow:0 0 0 3px rgba(201,164,92,.22)}
+main{max-width:780px;padding:22px 16px 116px}
+.hd{
+ border:1px solid rgba(255,255,255,.15);border-radius:26px;padding:25px 22px;
+ background:radial-gradient(circle at 88% 8%,rgba(255,255,255,.2),transparent 34%),
+ linear-gradient(135deg,#0a3829 0%,#116448 54%,#1b8964 100%);
+ box-shadow:0 16px 36px rgba(10,68,46,.2);position:relative;overflow:hidden;
+}
+.hd:after{content:"۞";font-family:"Amiri",serif;right:10px;bottom:-58px;font-size:180px;color:rgba(255,255,255,.075)}
+.hd b{font-size:1.3rem;line-height:1.45}
+.hd #nxt{font-family:"Amiri","Noto Naskh Arabic",serif;font-size:2.6rem!important;line-height:1.4}
+.card,.tile{
+ background:var(--c);border:1px solid var(--b);border-radius:21px;
+ box-shadow:var(--shadow);backdrop-filter:blur(10px);
+}
+.card{padding:17px;margin-bottom:13px}
+.g{grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+.tile{
+ min-height:122px;padding:15px 8px;gap:8px;font-size:.9rem;line-height:1.4;
+ font-weight:600;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+.tile:active{transform:scale(.965)}
+.tile i{
+ width:49px;height:49px;border-radius:17px;margin:0;
+ color:var(--p);background:linear-gradient(145deg,var(--tint),rgba(201,164,92,.13));
+ border:1px solid rgba(201,164,92,.18);
+}
+.section-title{font-size:1.06rem;margin:22px 3px 12px;gap:10px}
+button,.chip{
+ border-radius:14px;padding:11px 17px;font-weight:600;
+ background:linear-gradient(135deg,var(--p),#19815c);
+ box-shadow:0 5px 14px rgba(18,99,75,.16);transition:transform .16s ease,filter .16s ease;
+}
+button:active,.chip:active{transform:scale(.97)}
+.chip.o{background:transparent;color:var(--p);border:1px solid var(--p);box-shadow:none}
+input,select,textarea{
+ font-family:inherit;border-radius:14px;border:1px solid var(--b);
+ background:var(--c);color:var(--t);padding:12px 14px;
+}
+input:focus,select:focus,textarea:focus{outline:2px solid rgba(201,164,92,.45);border-color:var(--gold)}
+.ar{
+ font-family:"Noto Naskh Arabic","Amiri",serif;
+ font-size:1.85em;line-height:2.15;direction:rtl;text-align:right;
+}
+.qayah{border-radius:19px;border:1px solid var(--b);box-shadow:0 5px 18px rgba(20,61,43,.045)}
+.qayah .ar{
+ font-family:"Amiri","Noto Naskh Arabic",serif;
+ font-size:2rem;line-height:2.25;color:var(--t);
+}
+.name-ar{font-family:"Noto Naskh Arabic","Amiri",serif}
+nav{
+ background:var(--c);backdrop-filter:blur(20px);border-top:1px solid var(--b);
+ box-shadow:0 -8px 28px rgba(16,50,34,.07);padding:9px 7px calc(9px + env(safe-area-inset-bottom));
+}
+nav a{font-family:inherit;font-size:.75rem;border-radius:14px;padding:6px 10px}
+nav a.on{background:var(--tint);color:var(--p)}
+.soft-note{border:1px solid rgba(201,164,92,.18);border-radius:16px}
+#sp{background:radial-gradient(circle at 50% 25%,#1b805b,#082d20 75%);font-family:"SolaimanLipi",sans-serif}
+#sp img{box-shadow:0 0 0 5px rgba(201,164,92,.24)}
+a{ -webkit-tap-highlight-color:transparent}
+@media(min-width:600px){.g{grid-template-columns:repeat(4,minmax(0,1fr))}main{padding-top:28px}}
+@media(max-width:380px){.g{gap:8px}.tile{min-height:108px;font-size:.82rem;padding:12px 5px}}
+
 </style>
 </head><body>
 <div id="sp"><img src="icon-192.png" alt=""><b>Islamic Life</b></div>
