@@ -33,3 +33,10 @@
 - `capacitor.config.json` — Capacitor configuration
 
 **Copyright © Islamic Life — All Rights Reserved**
+
+
+### Prayer schedule & brand assets update
+- Prayer times are calculated locally from the saved latitude/longitude and timezone.
+- Calculation presets and Hanafi/standard Asr settings are selectable; manual minute adjustment is available.
+- `logo.svg` is the editable vector master. PNG launcher icons are exported from this SVG for Android/PWA compatibility.
+- Prayer times are estimates; verify with the local mosque timetable.

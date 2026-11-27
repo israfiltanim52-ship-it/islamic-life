@@ -6,7 +6,7 @@
 <link href="https://cdn.jsdelivr.net/gh/qnabangla/font-solaimanlipi@main/font.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0f766e"><link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#1877F2"><link rel="apple-touch-icon" href="icon-192.png">
 <style>
 :root{--bg:#f4f8f6;--c:#fff;--t:#17302b;--p:#0f766e;--m:#5b726c;--b:#d7e5e0}
 body.dark{--bg:#0c1715;--c:#15262310;--c:#16282a;--t:#e6f2ef;--p:#2dd4bf;--m:#93aaa4;--b:#26403c}
@@ -28,7 +28,7 @@ body.dark button,body.dark .chip{color:#06201c}.chip.o{background:none;color:var
 body.dark .hd{color:#06201c;background:var(--p)}.hd b{font-size:1.4rem}
 ol li,ul li{margin:.4rem 0}.ok{color:#16a34a}.no{color:#dc2626}
 #sp{position:fixed;inset:0;background:var(--p);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:99;transition:opacity .5s;font-size:1.3rem}
-#sp img{width:96px;border-radius:22px;margin-bottom:1rem}
+#sp img{width:108px;height:108px;border-radius:26px;margin-bottom:1rem;filter:drop-shadow(0 8px 18px #073b7a33)}
 nav{position:fixed;bottom:0;left:0;right:0;background:var(--c);border-top:1px solid var(--b);display:flex;justify-content:space-around;padding:.4rem 0 calc(.4rem + env(safe-area-inset-bottom));z-index:6}
 nav a{text-decoration:none;color:var(--m);font-size:.7rem;text-align:center}nav a i{display:block;font-size:1.4rem;font-style:normal}
 main{padding-bottom:5.5rem}.tile i{width:3rem;height:3rem;line-height:3rem;border-radius:14px;margin:0 auto .4rem;background:var(--ic)}
@@ -124,46 +124,6 @@ main{max-width:820px}
 .soft-note{background:#EAF4FF;color:#365879;padding:12px 14px;border-radius:14px;font-size:.88rem}
 body.dark .soft-note{background:#1c3550;color:#c6dcf7}
 @media(min-width:700px){.g{grid-template-columns:repeat(3,1fr)}}
-
-
-/* Sky blue visual system inspired by Facebook's clean blue interface */
-:root{--bg:#f0f7ff;--c:#ffffff;--t:#172b4d;--p:#1877f2;--m:#63758b;--b:#d7e7f8;--tint:#e7f2ff}
-body.dark{--bg:#0c1726;--c:#14243a;--t:#eaf3ff;--p:#56a6ff;--m:#a6bad2;--b:#29415e;--tint:#1b3553}
-header{background:rgba(255,255,255,.96);color:#172b4d;border-bottom:1px solid #d7e7f8}
-body.dark header{background:rgba(20,36,58,.96);color:var(--t)}
-header b{color:inherit}
-.hd,.hm-hero{background:linear-gradient(135deg,#1877f2,#42a5f5)!important}
-nav{background:rgba(255,255,255,.97);border-top:1px solid #d7e7f8;backdrop-filter:blur(14px)}
-body.dark nav{background:rgba(20,36,58,.97)}
-nav a.on{color:var(--p)}
-.tile i{background:#e7f2ff;color:#1877f2}
-button,.chip{background:#1877f2}
-.chip.o{color:#1877f2;border-color:#1877f2;background:transparent}
-.il-home-hero{background:linear-gradient(135deg,#1877f2 0%,#2398f4 55%,#62c1ff 100%);color:white;border-radius:22px;padding:22px 20px;margin:4px 0 18px;box-shadow:0 9px 24px rgba(24,119,242,.20)}
-.il-greeting{font-family:"Noto Naskh Arabic","Amiri",serif;font-size:1.45rem;text-align:center}
-.il-greeting-bn{text-align:center;font-weight:700;margin:3px 0 16px}
-.il-prayer-label{text-align:center;font-size:.82rem;opacity:.9}
-.il-prayer-name{text-align:center;font-size:1.2rem;font-weight:700}
-.il-prayer-time{text-align:center;font-size:1.65rem;font-weight:800;letter-spacing:.3px}
-.il-prayer-count{text-align:center;font-size:.78rem;opacity:.92}
-.il-date{text-align:center;font-size:.76rem;opacity:.9;margin-top:12px}
-.il-home-search{display:flex;align-items:center;gap:8px;background:var(--c);border:1px solid var(--b);border-radius:14px;padding:0 12px;margin:14px 0 20px;box-shadow:0 2px 9px rgba(24,80,140,.05)}
-.il-home-search span{font-size:1.5rem;color:var(--p)}
-.il-home-search input{border:0!important;box-shadow:none!important;margin:0!important;background:transparent!important;outline:none}
-.il-home-section{margin:20px 0 24px}
-.il-section-heading{display:flex;align-items:center;justify-content:space-between;margin:0 2px 11px}
-.il-section-heading b{font-size:1.02rem}
-.il-section-heading span{font-size:.76rem;color:var(--m)}
-.il-home-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.il-home-tile{min-height:108px;background:var(--c);border:1px solid var(--b);border-radius:16px;padding:12px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;text-decoration:none;color:var(--t);font-size:.82rem;font-weight:650;box-shadow:0 2px 8px rgba(26,83,143,.045);transition:transform .15s,box-shadow .15s}
-.il-home-tile:active{transform:scale(.97)}
-.il-home-icon{width:43px;height:43px;border-radius:14px;background:#e7f2ff;color:#1877f2;display:flex;align-items:center;justify-content:center;font-size:1.55rem}
-body.dark .il-home-icon{background:#1b3553;color:#76baff}
-.il-feature-head{text-align:center;padding:22px 12px 12px}
-.il-feature-emoji{font-size:3rem}
-.il-feature-head h2{margin:8px 0 4px}
-@media(min-width:650px){.il-home-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-@media(max-width:380px){.il-home-grid{gap:7px}.il-home-tile{min-height:100px;font-size:.76rem}}
 
 </style><style id="hm-style">
 .hm-hero{background:linear-gradient(160deg,#1c4a3b,#0c2319);border-radius:22px;padding:18px;color:#eef4ef;margin:0 0 14px}
@@ -266,8 +226,8 @@ a{ -webkit-tap-highlight-color:transparent}
 
 </style>
 </head><body>
-<div id="sp"><img src="icon-192.png" alt=""><b>Islamic Life</b></div>
-<header><a href="#home" id="bk" hidden><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg></a><img src="icon-192.png" width="30" height="30" alt="" style="border-radius:8px" id="lg"><b id="ti"></b></header><main id="app"></main><nav id="nv"></nav>
+<div id="sp"><img src="logo.svg" alt="Islamic Life লোগো"><b>Islamic Life</b></div>
+<header><a href="#home" id="bk" hidden><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg></a><img src="logo.svg" width="34" height="34" alt="Islamic Life লোগো" id="lg"><b id="ti"></b></header><main id="app"></main><nav id="nv"></nav>
 <script>
 const L=k=>{try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},W=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
 let st=Object.assign({lang:'bn',dark:false,fs:18},L('st')||{});
@@ -338,12 +298,14 @@ const IK={bookmark:'file',madrasa:'mosque',kitab:'qbook',inames:'star',days:'cal
 $('#nv').innerHTML=[['home','home','হোম'],['quran','book','কুরআন'],['madrasa','mosque','মাদ্রাসা'],['bookmark','file','বুকমার্ক'],['set','sliders','সেটিংস']].map(x=>'<a href="#'+x[0]+'">'+ic(x[1],22)+'<span>'+x[2]+'</span></a>').join('');
 NAV.unshift(['prayer','🕰️','নামাজের সময়','Prayer Times']);
 const R=Math.PI/180,sn=a=>Math.sin(a*R),cs=a=>Math.cos(a*R),ac=x=>Math.acos(Math.max(-1,Math.min(1,x)))/R;
-function pt(d){const lat=st.lat||23.81,lng=st.lng||90.41,tz=st.tz==null?6:st.tz;
+const PRAYER_PRESETS={karachi:{label:'করাচি (দক্ষিণ এশিয়া)',fajr:18,isha:18},mwl:{label:'মুসলিম ওয়ার্ল্ড লীগ',fajr:18,isha:17},isna:{label:'ISNA',fajr:15,isha:15},egypt:{label:'মিশর',fajr:19.5,isha:17.5},tehran:{label:'তেহরান',fajr:17.7,isha:14}};
+function prayerPrefs(){return Object.assign({method:'karachi',asr:'hanafi',adjust:0},L('il_prayer_settings')||{})}
+function pt(d){const lat=Number.isFinite(Number(st.lat))?Number(st.lat):23.81,lng=Number.isFinite(Number(st.lng))?Number(st.lng):90.41,tz=st.tz==null?6:st.tz,pref=prayerPrefs(),preset=PRAYER_PRESETS[pref.method]||PRAYER_PRESETS.karachi;
 const D=Date.UTC(d.getFullYear(),d.getMonth(),d.getDate(),12)/864e5+2440587.5-2451545;
 const g=(357.529+.98560028*D)%360,q=(280.459+.98564736*D)%360,Ls=(q+1.915*sn(g)+.02*sn(2*g))%360,e=23.439-3.6e-7*D;
 const ra=((Math.atan2(cs(e)*sn(Ls),cs(Ls))/R)/15+24)%24,dec=Math.asin(sn(e)*sn(Ls))/R;let eq=q/15-ra;eq-=24*Math.round(eq/24);
-const nn=12+tz-lng/15-eq,f=a=>ac((-sn(a)-sn(dec)*sn(lat))/(cs(dec)*cs(lat)))/15,aa=-Math.atan(1/(2+Math.tan(Math.abs(lat-dec)*R)))/R;
-return [['ফজর',nn-f(18)],['সূর্যোদয়',nn-f(.833)],['যোহর',nn+1/60],['আসর',nn+f(aa)],['মাগরিব',nn+f(.833)],['ইশা',nn+f(18)]]}
+const nn=12+tz-lng/15-eq,f=a=>ac((-sn(a)-sn(dec)*sn(lat))/(cs(dec)*cs(lat)))/15,aa=-Math.atan(1/((pref.asr==='hanafi'?2:1)+Math.tan(Math.abs(lat-dec)*R)))/R,off=Number(pref.adjust)||0;
+return [['ফজর',nn-f(preset.fajr)+off],['সূর্যোদয়',nn-f(.833)+off],['যোহর',nn+1/60+off],['আসর',nn+f(aa)+off],['মাগরিব',nn+f(.833)+off],['ইশা',nn+f(preset.isha)+off]]}
 const fm=h=>{h=(h+24)%24;let a=Math.floor(h),m=Math.round((h-a)*60);if(m==60){a++;m=0}const s=a>=12?'PM':'AM';return bn(((a+11)%12)+1)+':'+bn(String(m).padStart(2,'0'))+' '+s}
 function nxt(){const n=new Date(),h=n.getHours()+n.getMinutes()/60+n.getSeconds()/3600,l=pt(n).filter(x=>x[0]!='সূর্যোদয়');let x=l.find(x=>x[1]>h),t;if(x)t=x[1]-h;else{x=l[0];t=x[1]+24-h}const s=Math.floor(t*3600);return {n:x[0],t:x[1],c:[Math.floor(s/3600),Math.floor(s%3600/60),s%60].map(v=>bn(String(v).padStart(2,'0'))).join(':')}}
 function qib(){const lat=st.lat||23.81,lng=st.lng||90.41,d=39.8262-lng;return (Math.atan2(sn(d),cs(lat)*Math.tan(21.4225*R)-sn(lat)*cs(d))/R+360)%360}
@@ -448,8 +410,27 @@ async function loc(){
   W('il_location',locMeta);W('st',st);alert('GPS অবস্থান সংরক্ষণ হয়েছে। নামাজের সময় এখন এই স্থানাঙ্ক অনুযায়ী গণনা হবে।');go();
  },e=>alert('অবস্থান পাওয়া যায়নি। ব্রাউজার/ফোনে Location Permission চালু করুন অথবা নিজে অবস্থান লিখুন।'),{enableHighAccuracy:true,timeout:15000,maximumAge:60000});
 }
-const oldPrayer=V.prayer;
-V.prayer=()=>`<div class="hd"><b>নামাজের সময়সূচি</b><div>${safeTxt([locMeta.village,locMeta.union,locMeta.upazila,locMeta.district,locMeta.division].filter(Boolean).join(', ')||'অবস্থান নির্ধারণ করুন')}</div></div>${oldPrayer()}${card(`<a class="chip" href="#location">📍 অবস্থান পরিবর্তন / সম্পাদনা</a>`)}`;
+let prayerViewDate=new Date();
+function prayerDateShift(n){prayerViewDate.setDate(prayerViewDate.getDate()+n);go()}
+function prayerToday(){prayerViewDate=new Date();go()}
+function prayerSavePrefs(){const method=document.getElementById('prMethod')?.value||'karachi',asr=document.getElementById('prAsr')?.value||'hanafi',adjust=parseInt(document.getElementById('prAdjust')?.value||'0',10);W('il_prayer_settings',{method,asr,adjust:Number.isFinite(adjust)?adjust:0});go()}
+function prayerSchedule(){
+ const d=new Date(prayerViewDate.getFullYear(),prayerViewDate.getMonth(),prayerViewDate.getDate()),rows=pt(d),pref=prayerPrefs(),preset=PRAYER_PRESETS[pref.method]||PRAYER_PRESETS.karachi;
+ const today=new Date(),isToday=d.toDateString()===today.toDateString(),now=today.getHours()+today.getMinutes()/60;
+ const mainRows=rows.filter(x=>x[0]!=='সূর্যোদয়'),next=isToday?(mainRows.find(x=>x[1]>now)||mainRows[0]):null;
+ const place=[locMeta.village,locMeta.union,locMeta.upazila,locMeta.district,locMeta.division].filter(Boolean).join(', ')||'অবস্থান নির্ধারণ করা হয়নি';
+ const dateLabel=new Intl.DateTimeFormat('bn-BD',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(d);
+ const timeRows=rows.map(r=>`<div class="prayer-row ${next&&r[0]===next[0]?'current':''}"><span>${r[0]}${next&&r[0]===next[0]?' <small>পরবর্তী</small>':''}</span><b>${fm(r[1])}</b></div>`).join('');
+ const nextBox=next?`<div class="prayer-next"><span>পরবর্তী নামাজ</span><b>${next[0]}</b><strong>${fm(next[1])}</strong><small>সময় স্থানীয় সময় অনুযায়ী</small></div>`:`<div class="prayer-next"><span>নির্বাচিত দিনের সময়সূচি</span><b>${dateLabel}</b><small>আজকের পরবর্তী নামাজ দেখতে আজকের তারিখে ফিরুন</small></div>`;
+ return `<style>.prayer-hero{background:linear-gradient(135deg,#1268c9,#38a5f5);color:#fff;border-radius:22px;padding:20px;margin-bottom:14px;box-shadow:0 10px 26px #1877f226}.prayer-hero .place{font-size:.82rem;opacity:.9;line-height:1.6}.prayer-next{margin-top:16px;padding:15px;border-radius:17px;background:#ffffff20;display:flex;flex-direction:column;gap:4px}.prayer-next span,.prayer-next small{font-size:.78rem;opacity:.9}.prayer-next b{font-size:1.35rem}.prayer-next strong{font-size:2rem;line-height:1.2}.prayer-datebar{display:flex;align-items:center;justify-content:space-between;gap:6px;margin:12px 0}.prayer-datebar button{margin:0;padding:9px 12px}.prayer-date{font-weight:750;text-align:center;font-size:.9rem}.prayer-row{display:flex;justify-content:space-between;align-items:center;padding:13px 11px;border-bottom:1px solid var(--b);font-size:.98rem}.prayer-row:last-child{border:0}.prayer-row.current{background:var(--tint);color:var(--p);font-weight:800;border-radius:12px}.prayer-row small{font-size:.68rem;background:#1877f21a;padding:3px 7px;border-radius:20px;margin-left:6px}.prayer-info{font-size:.8rem;color:var(--m);line-height:1.7}.prayer-actions{display:flex;flex-wrap:wrap;gap:7px}.prayer-actions a{flex:1;text-align:center;min-width:135px}.prayer-settings summary{font-weight:750;cursor:pointer;padding:5px}.prayer-settings label{display:block;font-size:.82rem;color:var(--m);margin-top:10px}</style>
+ <div class="prayer-hero"><div style="font-weight:800;font-size:1.25rem">নামাজের সময়সূচি</div><div class="place">📍 ${safeTxt(place)}</div>${nextBox}</div>
+ <div class="prayer-datebar"><button class="chip o" onclick="prayerDateShift(-1)" aria-label="আগের দিন">‹</button><div><div class="prayer-date">${safeTxt(dateLabel)}</div><button class="chip o" onclick="prayerToday()" style="padding:5px 10px;font-size:.78rem">আজকের সময়</button></div><button class="chip o" onclick="prayerDateShift(1)" aria-label="পরের দিন">›</button></div>
+ ${card(`<div style="font-weight:800;margin-bottom:8px">আজকের ছয় ওয়াক্তের সময়</div>${timeRows}<p class="prayer-info">গণনার পদ্ধতি: ${safeTxt(preset.label)} • আসর: ${pref.asr==='hanafi'?'হানাফি':'শাফেয়ি/মালিকি/হাম্বলি'} • সময়গুলো জ্যোতির্বৈজ্ঞানিক হিসাবভিত্তিক; স্থানীয় মসজিদের ঘোষিত সময়ের সঙ্গে মিলিয়ে নিন।</p>`)}
+ ${card(`<div style="font-weight:800;margin-bottom:8px">সময় গণনার সেটিংস</div><details class="prayer-settings"><summary>পদ্ধতি ও সমন্বয় পরিবর্তন করুন</summary><label>গণনা পদ্ধতি<select id="prMethod">${Object.entries(PRAYER_PRESETS).map(([k,v])=>`<option value="${k}" ${pref.method===k?'selected':''}>${v.label} (${v.fajr}° / ${v.isha}°)</option>`).join('')}</select></label><label>আসরের পদ্ধতি<select id="prAsr"><option value="hanafi" ${pref.asr==='hanafi'?'selected':''}>হানাফি</option><option value="standard" ${pref.asr==='standard'?'selected':''}>শাফেয়ি / মালিকি / হাম্বলি</option></select></label><label>সব সময়ে মিনিট যোগ/বিয়োগ <span class="m">(প্রয়োজনে)</span><input id="prAdjust" type="number" min="-30" max="30" step="1" value="${Number(pref.adjust)||0}"></label><button onclick="prayerSavePrefs()">সেটিংস সংরক্ষণ</button></details>`)}
+ ${card(`<div style="font-weight:800;margin-bottom:6px">অবস্থান</div><div class="prayer-info">GPS চালু করলে আপনার বর্তমান স্থানাঙ্ক দিয়ে সময় গণনা হবে। GPS না চাইলে নিজে স্থানাঙ্ক লিখে সংরক্ষণ করতে পারবেন।</div><div class="prayer-actions"><button onclick="loc()">📍 GPS দিয়ে অবস্থান নিন</button><a class="chip o" href="#location">অবস্থান সম্পাদনা</a></div>`)}
+ ${card(`<div style="font-weight:800;margin-bottom:6px">কিবলার দিক</div><div style="text-align:center"><div style="color:var(--p);display:inline-block;transform:rotate(${Math.round(qib())}deg)">${ic('nav',58)}</div><div>উত্তর থেকে ${bn(Math.round(qib()))}° (ঘড়ির কাঁটার দিকে)</div></div>`)}`;
+}
+V.prayer=()=>prayerSchedule();
 const madrasaStore=()=>L('il_madrasa')||{students:[],attendance:{},marks:[],notices:[]};
 function saveMadrasa(d){W('il_madrasa',d)}
 function madrasaHome(){
@@ -578,46 +559,4 @@ V.about=()=>'<div class="hd"><b>Islamic Life</b><div>ইসলামি জ্�
 addEventListener('hashchange',go);apply();go();
 setTimeout(()=>{const s=$('#sp');s.style.opacity=0;setTimeout(()=>s.remove(),500)},900);
 if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
-
-/* Islamic Life: expanded sky-blue Facebook-inspired home feature directory */
-const IL_HOME_GROUPS = [["ইসলামিক জ্ঞান ও শিক্ষা", [["আল্লাহর ৯৯ নাম", "names", "✨"], ["নবী-রাসূলদের নাম", "prophets", "🕌"], ["ইসলামিক নাম ও অর্থ", "islamic-names", "👶"], ["ছেলে শিশুর ইসলামিক নাম", "boy-names", "👦"], ["মেয়ে শিশুর ইসলামিক নাম", "girl-names", "👧"], ["সাহাবিদের নাম", "sahaba", "🌟"], ["সাহাবিয়াদের নাম", "sahabiyat", "🌸"], ["নবী-রাসূলদের জীবনী", "prophet-biography", "📖"], ["নবীদের কাহিনি", "prophet-stories", "🕋"], ["রাসূলুল্লাহ ﷺ-এর সিরাত", "seerah", "💚"], ["ইসলামের ইতিহাস", "islam-history", "🏛️"], ["ইসলামের গুরুত্বপূর্ণ ঘটনা", "islam-events", "📜"], ["ইসলামের মৌলিক শিক্ষা", "islam-basics", "🎓"], ["ইসলামিক প্রশ্নোত্তর", "islam-qa", "❔"], ["ইসলামিক কুইজ", "quiz", "🧠"], ["দৈনিক ইসলামিক জ্ঞান", "daily-knowledge", "💡"]]], ["ইবাদত ও দৈনন্দিন আমল", [["নামাজের সময়সূচি", "prayer-times", "🕰️"], ["নামাজ শিক্ষা", "prayer-learning", "🧎"], ["নামাজের নিয়ত ও দোয়া", "prayer-dua", "🤲"], ["অজু শিক্ষা", "wudu", "💧"], ["গোসলের নিয়ম", "ghusl", "🚿"], ["আজান ও ইকামত", "adhan", "📢"], ["কিবলা কম্পাস", "qibla", "🧭"], ["ডিজিটাল তাসবিহ", "tasbih", "📿"], ["দৈনিক আমল", "daily-amal", "🌿"], ["সকাল-সন্ধ্যার যিকির", "morning-evening", "🌅"], ["ঘুমানোর আগের আমল", "before-sleep", "🌙"], ["ঘুম থেকে ওঠার দোয়া", "wake-dua", "☀️"], ["জুমার দিনের আমল", "jummah", "🕌"], ["রমজানের আমল", "ramadan-amal", "🌙"], ["রোজার হিসাব", "fasting-tracker", "📆"], ["তাহাজ্জুদ", "tahajjud", "🌌"], ["ইস্তিগফার", "istighfar", "💚"], ["দরুদ শরিফ", "durood", "🌹"], ["তওবা ও দোয়া", "tawbah", "🤲"]]], ["দোয়া, হাদিস ও ইসলামিক পাঠাগার", [["দৈনন্দিন জীবনের দোয়া", "daily-dua", "🤲"], ["কুরআনের দোয়া", "quran-dua", "📖"], ["হাদিসের সংগ্রহ", "hadith-collection", "📜"], ["সহিহ বুখারি", "bukhari", "📚"], ["সহিহ মুসলিম", "muslim", "📚"], ["রিয়াদুস সালেহিন", "riyad", "📗"], ["হাদিস অনুসন্ধান", "hadith-search", "🔎"], ["ইসলামিক বই", "islamic-books", "📚"], ["ইসলামিক PDF লাইব্রেরি", "pdf-library", "🗂️"], ["আরবি অভিধান", "arabic-dictionary", "🔤"], ["ইসলামিক প্রবন্ধ", "islamic-articles", "📝"], ["ইসলামিক কবিতা ও সাহিত্য", "islamic-literature", "✒️"]]], ["ইসলামিক ক্যালেন্ডার ও হিসাব", [["হিজরি ক্যালেন্ডার", "hijri-calendar", "🌙"], ["বাংলা ও ইংরেজি ক্যালেন্ডার", "calendar", "📅"], ["রমজান ক্যালেন্ডার", "ramadan-calendar", "🌙"], ["সেহরি ও ইফতারের সময়", "sehri-iftar", "🍽️"], ["গুরুত্বপূর্ণ ইসলামিক দিবস", "important-days", "🗓️"], ["যাকাত ক্যালকুলেটর", "zakat", "🧮"], ["ফিতরা হিসাব", "fitra", "💰"], ["উত্তরাধিকার হিসাব", "inheritance", "⚖️"], ["রোজার ট্র্যাকার", "fasting-tracker", "📊"], ["নামাজের ট্র্যাকার", "prayer-tracker", "✅"]]], ["ইসলামিক জীবন ও প্রয়োজনীয় সেবা", [["হালাল-হারাম বিষয়ক শিক্ষা", "halal-haram", "☑️"], ["ইসলামিক ফতোয়া ও মাসআলা", "fatwa", "📖"], ["জানাজার নামাজ শিক্ষা", "janaza", "🕊️"], ["মৃত ব্যক্তির জন্য দোয়া", "dua-deceased", "🤲"], ["কবর জিয়ারতের দোয়া", "grave-dua", "🌿"], ["হজ শিক্ষা", "hajj", "🕋"], ["ওমরাহ শিক্ষা", "umrah", "🕋"], ["কুরবানির নিয়ম", "qurbani", "🐑"], ["আকিকা শিক্ষা", "aqiqah", "👶"], ["বিবাহ ও পারিবারিক জীবন", "family-life", "💍"], ["শিশুদের ইসলামিক শিক্ষা", "children-islamic", "🧒"], ["ইসলামিক শব্দার্থ", "islamic-glossary", "🔠"]]], ["অতিরিক্ত বিশেষ ফিচার", [["ইসলামিক ওয়ালপেপার", "wallpapers", "🖼️"], ["ইসলামিক ক্যালিগ্রাফি", "calligraphy", "🎨"], ["ইসলামিক অডিও", "islamic-audio", "🎧"], ["কুরআন তিলাওয়াত অডিও", "quran-audio", "🎙️"], ["আজান অডিও", "adhan-audio", "🔊"], ["ইসলামিক ভিডিও", "islamic-video", "🎬"], ["ইসলামিক বক্তৃতা", "lectures", "🎤"], ["দৈনিক আয়াত", "daily-ayah", "📖"], ["দৈনিক হাদিস", "daily-hadith", "📜"], ["দৈনিক দোয়া", "daily-dua", "🤲"], ["ইসলামিক নোট", "islamic-notes", "🗒️"], ["পছন্দের বিষয় সংরক্ষণ", "favorites", "❤️"], ["বন্ধুদের সঙ্গে শেয়ার", "share", "📤"]]]];
-const IL_FEATURES = IL_HOME_GROUPS.flatMap(g=>g[1].map(x=>({title:x[0],slug:x[1],emoji:x[2],group:g[0]})));
-const IL_FEATURE_MAP = Object.fromEntries(IL_FEATURES.map(x=>[x.slug,x]));
-const IL_DIRECT = {
- 'names':'names','quiz':'quiz','tasbih':'tasbih','prayer-times':'prayer','qibla':'prayer',
- 'calendar':'cal','hijri-calendar':'cal','important-days':'days','zakat':'zakat',
- 'hajj':'hajj','umrah':'hajj','islamic-books':'kitab','pdf-library':'kitab',
- 'hadith-collection':'hadith','hadith-search':'hadith','daily-dua':'dua',
- 'daily-amal':'dua','morning-evening':'dua','adhan':'prayer'
-};
-V.feature=(slug)=>{
- const f=IL_FEATURE_MAP[slug];
- if(!f) return SOON('ফিচার');
- const target=IL_DIRECT[slug];
- return '<div class="il-feature-head"><div class="il-feature-emoji">'+f.emoji+'</div><h2>'+ilEscape(f.title)+'</h2><div class="m">'+ilEscape(f.group)+'</div></div>'
- +card('<b>এই ফিচারটি Islamic Life-এ যুক্ত করার জন্য নির্ধারিত হয়েছে।</b><p class="m">এ পর্যায়ে বাটন ও পৃষ্ঠা সংযোগ প্রস্তুত করা হয়েছে। মূল তথ্য, নির্ভরযোগ্য উৎস এবং কার্যকারিতা পরবর্তী উন্নয়ন পর্যায়ে যুক্ত হবে।</p>'
- +(target?'<a class="chip" href="#'+target+'">বর্তমান বিভাগ খুলুন</a>':'')
- +'<a class="chip o" href="#home">হোমপেজে ফিরে যান</a>');
-};
-const ilOldHome=V.home;
-V.home=()=>{
- const x=nxt();
- const tile=f=>'<a class="il-home-tile" href="#feature/'+f[1]+'"><span class="il-home-icon">'+f[2]+'</span><span>'+f[0]+'</span></a>';
- return '<section class="il-home-hero"><div class="il-greeting">السَّلَامُ عَلَيْكُمْ</div><div class="il-greeting-bn">আসসালামু আলাইকুম</div><div class="il-prayer-label">পরবর্তী নামাজ</div><div class="il-prayer-name" id="nxn">'+x.n+'</div><div class="il-prayer-time" id="nxt">'+fm(x.t)+'</div><div class="il-prayer-count" id="nxc">'+x.c+'</div><div class="il-date">'+hij()+' · '+compactDate()+'</div></section>'
- +'<div class="il-home-search"><span>⌕</span><input id="ilFeatureSearch" placeholder="ইসলামিক ফিচার খুঁজুন..." oninput="ilFilterHome(this.value)"></div>'
- +'<div id="ilHomeGroups">'+IL_HOME_GROUPS.map(g=>'<section class="il-home-section"><div class="il-section-heading"><b>'+g[0]+'</b><span>'+g[1].length+'টি ফিচার</span></div><div class="il-home-grid">'+g[1].map(tile).join('')+'</div></section>').join('')+'</div>'
- +'<div id="ilHomeSearchResults" hidden></div>'
- +'<section class="il-home-section"><div class="il-section-heading"><b>আপনার অবস্থান</b></div>'+card('<div class="m">'+ilEscape([locMeta.village,locMeta.union,locMeta.upazila,locMeta.district,locMeta.division].filter(Boolean).join(', ')||'এখনো অবস্থান নির্ধারণ করা হয়নি')+'</div><a class="chip" href="#location">অবস্থান নির্ধারণ করুন</a>')+'</section>';
-};
-function ilFilterHome(q){
- const box=document.getElementById('ilHomeSearchResults'),groups=document.getElementById('ilHomeGroups');
- const term=(q||'').trim().toLowerCase();
- if(!term){groups.hidden=false;box.hidden=true;box.innerHTML='';return;}
- const found=IL_FEATURES.filter(f=>f.title.toLowerCase().includes(term)||f.group.toLowerCase().includes(term));
- groups.hidden=true;box.hidden=false;
- box.innerHTML='<section class="il-home-section"><div class="il-section-heading"><b>অনুসন্ধানের ফলাফল</b><span>'+found.length+'টি</span></div><div class="il-home-grid">'+found.map(f=>'<a class="il-home-tile" href="#feature/'+f.slug+'"><span class="il-home-icon">'+f.emoji+'</span><span>'+f.title+'</span></a>').join('')+'</div>'+(found.length?'':'<p class="m">কোনো ফিচার পাওয়া যায়নি।</p>')+'</section>';
-}
-
-/* Render the updated home layout after all final overrides are registered. */
-if(!location.hash || location.hash==='#home') go();
 </script></body></html>
