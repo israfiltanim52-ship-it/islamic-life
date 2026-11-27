@@ -1,11 +1,11 @@
 {
   "name": "islamic-life",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "private": true,
   "description": "Islamic Life PWA and Android app",
   "scripts": {
     "build": "node scripts/build-web.js",
-    "android:sync": "npm run build && cap sync android"
+    "android:sync": "npm run build && npx cap sync android"
   },
   "dependencies": {
     "@capacitor/android": "^7.4.2",

@@ -1,39 +1,35 @@
-# Islamic Life 2.1
+# Islamic Life — New Version
 
-Islamic Life is a Bengali-first Islamic life and learning PWA with an Android build workflow.
+**প্রতিষ্ঠাতা ও নির্মাতা:** ইস্রাফিল তানিম  
+**স্লোগান:** ইসলামি জ্ঞান, শিক্ষা ও সুন্দর জীবনচর্চার ডিজিটাল সঙ্গী।  
+**প্ল্যাটফর্ম:** Web App, PWA এবং Capacitor Android project
 
-## Included
-- Full 114-surah Quran reader through QuranEnc API, Arabic text and Bengali translation. Surahs viewed are cached locally; use the in-app download-all control to cache all 114 on that device. First download requires internet.
-- 99 Asma-ul-Husna entries with Arabic, Bengali pronunciation and meaning.
-- Prayer time calculation and Qibla direction; GPS coordinates or manual coordinates can be saved.
-- Location profile fields: division, district, upazila/thana, union and village.
-- Bengali, Gregorian and Hijri date display. Hijri date may differ from Bangladesh moon-sighting announcements.
-- Madrasa tools: student register, attendance, exam marks, results, teacher list, class routine, notices, fee records and summary reports.
-- Decorative subtle Islamic geometric background, responsive PWA layout.
+## এই সংস্করণে বাস্তবায়িত
+- বিদ্যমান Welcome/Splash Page অপরিবর্তিত রাখা হয়েছে।
+- সাদা ও আকাশি নীলভিত্তিক নতুন UI theme।
+- নিচে নির্ধারিত পাঁচটি নেভিগেশন: হোম, কুরআন, মাদ্রাসা, বুকমার্ক, সেটিংস।
+- বিদ্যমান কুরআন, হাদিস, দোয়া, নামাজ, কিবলা, তাসবিহসহ কার্যকর অংশ সংরক্ষণ।
+- মাদ্রাসা ব্যবস্থাপনা ও ডিরেক্টরি UI বিদ্যমান কোড থেকে রাখা হয়েছে।
+- বুকমার্কের জন্য LocalStorage-ভিত্তিক সংরক্ষণ কাঠামো।
+- সেটিংসে ভাষা-টগল, ফন্ট সাইজ, থিম, অবস্থান ও গোপনীয়তা-সংক্রান্ত তথ্য।
+- PWA manifest-এর রং আপডেট।
 
-## Deploy web app
-1. Extract this ZIP.
-2. Upload **all files and folders**, including the hidden `.github` folder, to the repository root.
-3. Commit to `main`.
-4. In GitHub: Settings → Pages → Build and deployment → Source: GitHub Actions.
-5. Open Actions and wait for `Deploy Islamic Life to GitHub Pages` to succeed.
+## গুরুত্বপূর্ণ সীমাবদ্ধতা — প্রকাশের আগে সম্পন্ন করতে হবে
+1. **১৫ লাইনের হিফজ কুরআন:** AmalKit রেফারেন্স ও ৬১০ পৃষ্ঠার নির্দিষ্ট ইমদাদিয়া সংস্করণের লাইসেন্সপ্রাপ্ত পৃষ্ঠা-ডেটা/স্ক্যান মূল ZIP-এ ছিল না। তাই ভুয়া পৃষ্ঠা বা আরবি পাঠ তৈরি করা হয়নি। UI-তে পৃষ্ঠা নির্বাচন রাখা হয়েছে; আসল পৃষ্ঠা-ডেটা যুক্ত ও যাচাই না করা পর্যন্ত এটি সম্পূর্ণ ১৫-লাইন মুশাফ রিডার নয়।
+2. **Firebase:** Firebase project config, Authentication, Firestore, Storage ও Security Rules এই ZIP-এ সংযুক্ত নয়। মাদ্রাসার তথ্য বর্তমানে লোকাল ডিভাইসে থাকে; অনলাইন বহু-ব্যবহারকারী সুবিধা বা প্রকৃত গোপনীয়তা চালু হয়েছে বলে গণ্য করা যাবে না।
+3. **মাদ্রাসা ডিরেক্টরি:** যাচাইকৃত জাতীয় ডেটাসেট সরবরাহ করা হয়নি। খালি ডিরেক্টরি ও আবেদন UI রাখা হয়েছে; কোনো প্রতিষ্ঠানকে যাচাই ছাড়া তালিকাভুক্ত করা হয়নি।
+4. **APK:** এই ZIP হলো ওয়েব/PWA সোর্স ও Capacitor কনফিগারেশন। Android APK তৈরি করতে Android Studio/SDK, Capacitor Android platform এবং build environment লাগবে।
 
-## Build Android APK
-1. Ensure `.github/workflows/android-apk.yml` exists in the repository.
-2. Push/commit to `main`, or open Actions → Android APK Build → Run workflow.
-3. Wait for a green check.
-4. Open the successful run → Artifacts → `islamic-life-debug-apk`.
-5. Download and extract the ZIP to get `app-debug.apk`.
+## চালানো
+- `index.html` লোকাল সার্ভার বা GitHub Pages-এ প্রকাশ করুন।
+- PWA-এর জন্য HTTPS প্রয়োজন।
+- Capacitor build-এর জন্য `npm install` চালিয়ে Android platform সংযুক্ত/সিঙ্ক করে Android Studio-তে build করুন।
 
-This is a debug APK for testing, not a Play Store signed release. A production release requires signing configuration and release build steps.
+## মূল ফাইল
+- `index.html` — অ্যাপ
+- `developer.html` — নির্মাতার পরিচয়
+- `manifest.json` — PWA manifest
+- `sw.js` — Service Worker
+- `capacitor.config.json` — Capacitor configuration
 
-## Important limitations
-- Prayer times depend on correct coordinates and calculation assumptions. Verify with the local mosque; calculation settings may need adjustment for local convention.
-- GPS reverse lookup is best-effort and uses OpenStreetMap Nominatim. If a local administrative label is missing, edit the location fields manually.
-- Madrasa records in this version are stored only in the current browser/device using local storage. They are not synced between users or devices. Do not store sensitive student data in this prototype. Multi-user access requires a secure backend, authentication, authorization and privacy controls.
-- Calendar display uses a calculated Bangla date and the browser's Umm al-Qura Hijri calendar. Local moon-sighting dates can differ.
-
-## Design update
-- Refreshed the interface with a modern emerald, ivory and gold visual theme.
-- Applied SolaimanLipi for Bengali UI text, Amiri for Quranic Arabic display, and Noto Naskh Arabic for general Arabic text.
-- Updated the developer profile page using the supplied education and work details; omitted unverified contact information.
+**Copyright © Islamic Life — All Rights Reserved**
